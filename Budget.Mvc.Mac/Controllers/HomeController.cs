@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics;
+using Budget.Mvc.Mac.Models;
 using Budget.Mvc.Mac.Models.ViewModels;
 using Budget.Mvc.Mac.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -17,13 +18,33 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         var transactions = _budgetRepository.GetTransactions();
+        var categories = _budgetRepository.GetCategories();
 
         var viewModel = new BudgetViewModel
         {
-            Transactions = transactions
+            Transactions = transactions,
+            InsertTransaction = new InsertTransactionViewModel { Categories = categories }
         };
 
         return View(viewModel);
+    }
+
+    [HttpPost]
+    public IActionResult InsertTransaction(BudgetViewModel model)
+    {
+        var transaction = new Transaction
+        {
+            Id = model.InsertTransaction.Id,
+            Amount = model.InsertTransaction.Amount,
+            Name = model.InsertTransaction.Name,
+            Date = model.InsertTransaction.Date,
+            TransactionType = model.InsertTransaction.TransactionType,
+            CategoryId = model.InsertTransaction.CategoryId
+        };
+
+        _budgetRepository.AddTransaction(transaction);
+
+        return RedirectToAction("Index");
     }
 }
 

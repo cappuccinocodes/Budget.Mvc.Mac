@@ -1,1 +1,61 @@
-﻿Transaction Modal
+﻿@model BudgetViewModel
+
+<div class="modal-content">
+    <div class="modal-container">
+        <form asp-action="InsertTransaction" id="insert-transaction-form" method="post" class="form-horizontal" role="form">
+            <input asp-for="InsertTransaction.Id" type="hidden" class="form-control" />
+
+            <div class="row justify-content-center transaction-input">
+                <div class="form-floating col-xl-6 col-lg-8 col-md-8 col-sm-10">
+                    <input type="Date" asp-for="InsertTransaction.Date" class="form-control" />
+                    <label asp-for="InsertTransaction.Date" class="form-label"></label>
+                    <span id="transaction-validation" asp-validation-for="InsertTransaction.Date" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center transaction-input">
+                <div class="form-floating col-xl-6 col-lg-8 col-md-8 col-sm-10">
+                    <input asp-for="InsertTransaction.Name" class="form-control" />
+                    <label asp-for="InsertTransaction.Name" class="form-label"></label>
+                    <span asp-validation-for="InsertTransaction.Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center transaction-input">
+                <div class="form-floating col-xl-6 col-lg-8 col-md-8 col-sm-10">
+                    <input asp-for="InsertTransaction.Amount" class="form-control" />
+                    <label asp-for="InsertTransaction.Amount" class="form-label"></label>
+                    <span asp-validation-for="InsertTransaction.Amount" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center transaction-input">
+                <div class="form-floating col-xl-6 col-lg-8 col-md-8 col-sm-10">
+                    <select asp-for="InsertTransaction.CategoryId" class="form-control">
+                        <option></option>
+                        @foreach (var category in Model.InsertTransaction.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                    <label asp-for="InsertTransaction.CategoryId" class="form-label"></label>
+                    <span asp-validation-for="InsertTransaction.CategoryId" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center transaction-input">
+                <div class="form-floating col-xl-6 col-lg-8 col-md-8 col-sm-10">
+                    <select asp-for="InsertTransaction.TransactionType" asp-items="Html.GetEnumSelectList<TransactionType>()" class="form-control"></select>
+                    <label asp-for="InsertTransaction.TransactionType" class="form-label"></label>
+                    <span asp-validation-for="InsertTransaction.TransactionType" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-lg-8 col-md-8 col-sm-10 mt-3 mb-5">
+                    <button type="submit" class="btn btn-success form-button">Add Transaction</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

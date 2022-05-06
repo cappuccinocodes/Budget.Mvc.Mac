@@ -43,19 +43,3 @@
 </body>
 </html>
 
-CREATE TABLE Category (
-  Id INTEGER PRIMARY KEY AUTOINCREMENT,
-  Name  TEXT UNIQUE
-)
-
-CREATE TABLE "Transactions" (
-	"Id"	INTEGER NOT NULL,
-	"Name"	Text NOT NULL,
-	"Date"	Text NOT NULL,
-	"TransactionType"	INT NOT NULL,
-	"CategoryId"	INT NOT NULL,
-	"Amount"	TEXT NOT NULL,
-
-	PRIMARY KEY("Id" AUTOINCREMENT),
-	FOREIGN KEY("CategoryId") REFERENCES "Category"("Id") ON DELETE CASCADE
-)
