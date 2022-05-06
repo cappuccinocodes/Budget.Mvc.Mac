@@ -1,4 +1,4 @@
-﻿@model  BudgetViewModel
+﻿@model BudgetViewModel
 
 <table id="records" class="table">
     <tbody>
@@ -76,3 +76,9 @@
         }
     </tbody>
 </table>
+
+<div id="addTransactionModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <partial name="_insertTransaction" />
+    </div>
+</div>
