@@ -42,7 +42,17 @@ public class HomeController : Controller
             CategoryId = model.InsertTransaction.CategoryId
         };
 
-        _budgetRepository.AddTransaction(transaction);
+        if (transaction.Id > 0)
+            _budgetRepository.UpdateTransaction(transaction);
+        else
+            _budgetRepository.AddTransaction(transaction);
+
+        return RedirectToAction("Index");
+    }
+
+    public IActionResult DeleteTransaction(int id)
+    {
+        _budgetRepository.DeleteTransaction(id);
 
         return RedirectToAction("Index");
     }

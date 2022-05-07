@@ -8,9 +8,13 @@ namespace Budget.Mvc.Mac.Repositories
 {
 	public interface IBudgetRepository
 	{
-		List<Transaction> GetTransactions();
 		List<Category> GetCategories();
+
+		List<Transaction> GetTransactions();
 		void AddTransaction(Transaction transaction);
+		void UpdateTransaction(Transaction transaction);
+		void DeleteTransaction(int id);
+
 	}
 
 	public class BudgetRepository: IBudgetRepository
@@ -28,6 +32,15 @@ namespace Budget.Mvc.Mac.Repositories
 			{
 				var sql = "INSERT INTO Transactions(Name, Date, Amount, TransactionType, CategoryId ) Values(@Name, @Date, @Amount, @TransactionType, @CategoryId )";
 				connection.Execute(sql, transaction);
+			}
+		}
+
+        public void DeleteTransaction(int id)
+        {
+			using (IDbConnection connection = new SqliteConnection(_configuration.GetConnectionString("ConnectionString")))
+			{
+				var sql = "DELETE FROM Transactions WHERE Id = @id";
+				connection.Execute(sql, new { id });
 			}
 		}
 
@@ -58,6 +71,19 @@ namespace Budget.Mvc.Mac.Repositories
 				return allTransactions.ToList();
 			}
 		}
-	}
+
+        public void UpdateTransaction(Transaction transaction)
+        {
+			using (IDbConnection connection = new SqliteConnection(_configuration.GetConnectionString("ConnectionString")))
+			{
+				var sql =
+					@"UPDATE Transactions
+                          SET Date = @Date, Amount = @Amount, Name = @Name, CategoryId = @CategoryId, TransactionType = @TransactionType
+                          WHERE Id = @Id";
+
+				connection.Execute(sql, transaction);
+			}
+		}
+    }
 }
 
