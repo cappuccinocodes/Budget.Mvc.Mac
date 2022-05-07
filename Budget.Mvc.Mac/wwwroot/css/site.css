@@ -1,18 +1,128 @@
 ﻿html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+.open-insert-modal-btn {
+    display: block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
+
+.container-nav {
+    margin: 0 200px;
+}
+
+.container-body {
+    padding: 0 200px;
+}
+
+.buttons-cell {
+    text-align: end;
+    vertical-align: middle;
+}
+
+.form-label {
+    padding-left: 20px !important;
+}
+
+.transaction-cell {
+    display: block;
+}
+
+.transaction-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: -30px;
+}
+
+.transaction-date {
+    font-size: 13px;
+    font-weight: 600;
+    color: blue;
+    margin-bottom: -30px;
+}
+
+.transaction-type-income {
+    font-size: 13px;
+    font-weight: 600;
+    color: green;
+}
+
+.transaction-type-expense {
+    font-size: 13px;
+    font-weight: 600;
+    color: red;
+}
+
+.transaction-category {
+    vertical-align: middle;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.transaction-amount-income {
+    font-size: 22px;
+    font-weight: 600;
+    color: green;
+    vertical-align: middle;
+}
+
+.transaction-amount-expense {
+    font-size: 22px;
+    font-weight: 600;
+    color: red;
+    vertical-align: middle;
+}
+
+.transaction-amount {
+    vertical-align: middle;
+}
+
+.filter-button-wrapper {
+    vertical-align: middle;
+}
+
+.filter-button {
+    display: block;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+}
+
+.modal-container {
+    padding-top: 50px;
+}
+
+.transaction-input {
+    margin-bottom: 15px;
+}
+
+.form-button {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.delete-confirmation-message {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.delete-modal-container {
+    padding-top: 25px;
 }

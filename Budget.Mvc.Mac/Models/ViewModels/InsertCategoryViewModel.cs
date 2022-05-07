@@ -9,8 +9,8 @@ namespace Budget.Mvc.Mac.Models.ViewModels
 		public int Id { get; set; }
 
 		[Required]
-		//[Remote("IsUnique", "Home")]
-		public string Name { get; set; }
+        [Remote("IsUnique", "Home")]
+        public string Name { get; set; }
 	}
 }
 

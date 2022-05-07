@@ -106,5 +106,17 @@ public class HomeController : Controller
 
         return transactions;
     }
+
+    [AcceptVerbs("GET", "POST")]
+    public JsonResult IsUnique([Bind(Prefix = "InsertCategory.Name")] string name)
+    {
+        var categories = _budgetRepository.GetCategories();
+
+        if (categories.Any(x => x.Name == name))
+            return Json("Category already exists");
+
+        return Json(true);
+
+    }
 }
 

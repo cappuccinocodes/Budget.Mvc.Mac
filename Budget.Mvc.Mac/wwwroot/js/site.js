@@ -5,6 +5,7 @@
     $("#openTransactionModalBtn").addClass("d-none");
     $("#openCategoryModalBtn").removeClass("d-none");
     $("#manageCategoriesBtn").addClass("d-none");
+    $("#filter-area").addClass("d-none");
 });
 
 $("#backToTransactionsBtn").on("click", function () {
@@ -14,6 +15,7 @@ $("#backToTransactionsBtn").on("click", function () {
     $("#openTransactionModalBtn").removeClass("d-none");
     $("#openCategoryModalBtn").addClass("d-none");
     $("#manageCategoriesBtn").removeClass("d-none");
+    $("#filter-area").removeClass("d-none");
 });
 
 $("#openTransactionModalBtn").on("click", function () {
@@ -65,4 +67,12 @@ $(".openDeleteCategoryModalBtn").on("click", function () {
     var id = $(this).closest('tr').find('td:first').html();
     $('#deleteCategoryForm').append(`<input type="hidden" name="id" value="${id}">`);
     $("#deleteCategoryModal").modal("show");
+});
+
+$("#close-delete-category-modal").on("click", function () {
+    $("#deleteCategoryModal").modal("hide");
+});
+
+$("#close-delete-transaction-modal").on("click", function () {
+    $("#deleteTransactionModal").modal("hide");
 });
