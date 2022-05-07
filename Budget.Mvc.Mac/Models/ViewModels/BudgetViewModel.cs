@@ -6,6 +6,7 @@
         public InsertTransactionViewModel InsertTransaction { get; set; }
         public CategoriesViewModel Categories { get; set; }
         public InsertCategoryViewModel InsertCategory { get; set; }
+        public FilterParametersViewModel? FilterParameters { get; set; }
     }
 }
 

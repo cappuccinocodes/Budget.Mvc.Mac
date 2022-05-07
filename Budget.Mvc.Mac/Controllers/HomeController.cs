@@ -14,9 +14,10 @@ public class HomeController : Controller
         _budgetRepository = budgetRepository;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(BudgetViewModel? model)
     {
-        var transactions = _budgetRepository.GetTransactions();
+        var transactions = FilterTransactions(model);
+
         var categories = _budgetRepository.GetCategories();
 
         var viewModel = new BudgetViewModel
@@ -24,6 +25,7 @@ public class HomeController : Controller
             Transactions = transactions,
             InsertTransaction = new InsertTransactionViewModel { Categories = categories },
             Categories = new CategoriesViewModel { Categories = categories },
+            FilterParameters = new FilterParametersViewModel { Categories = categories }
         };
 
         return View(viewModel);
@@ -73,6 +75,36 @@ public class HomeController : Controller
         _budgetRepository.DeleteCategory(id);
 
         return RedirectToAction("Index");
+    }
+
+    private List<Transaction> FilterTransactions(BudgetViewModel? model)
+    {
+        var transactions = _budgetRepository.GetTransactions();
+
+        if (model.FilterParameters == null)
+            transactions = transactions.ToList();
+
+        else if ((model.FilterParameters.CategoryId != 0 && model.FilterParameters.StartDate == null))
+            transactions = transactions
+                .Where(x => x.CategoryId == model.FilterParameters.CategoryId)
+                .ToList();
+
+        else if ((model.FilterParameters.CategoryId == 0 && model.FilterParameters.StartDate != null))
+            transactions = transactions
+                .Where(x =>
+                DateTime.Parse(x.Date) >= DateTime.Parse(model.FilterParameters.StartDate) &&
+                DateTime.Parse(x.Date) <= DateTime.Parse(model.FilterParameters.EndDate))
+                .ToList();
+
+        else if ((model.FilterParameters.CategoryId != 0 && model.FilterParameters.StartDate != null))
+            transactions = transactions
+                     .Where(x =>
+                     DateTime.Parse(x.Date) >= DateTime.Parse(model.FilterParameters.StartDate) &&
+                     DateTime.Parse(x.Date) <= DateTime.Parse(model.FilterParameters.EndDate) &&
+                     x.CategoryId == model.FilterParameters.CategoryId)
+                     .ToList();
+
+        return transactions;
     }
 }
 

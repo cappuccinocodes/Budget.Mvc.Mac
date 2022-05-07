@@ -1,5 +1,9 @@
 ﻿@model BudgetViewModel
 
+    <div id="filter-area">
+        <partial name="_filterForm" />
+    </div>
+
 <table id="records" class="table">
     <tbody>
         @foreach (var transaction in Model.Transactions)
