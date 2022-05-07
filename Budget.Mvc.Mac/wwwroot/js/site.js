@@ -21,6 +21,10 @@ $("#openTransactionModalBtn").on("click", function () {
     $("#addTransactionModal").modal("show");
 });
 
+$("#openCategoryModalBtn").on("click", function () {
+    $("#addCategoryModal").modal("show");
+});
+
 $(".openUpdateTransactionModalBtn").on("click", function () {
     var id = $(this).closest('tr').find('td:first').html();
     var date = $(this).closest('tr').find('td:eq(1) .transaction-date').html();

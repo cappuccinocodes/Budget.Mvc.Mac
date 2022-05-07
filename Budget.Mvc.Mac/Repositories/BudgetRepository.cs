@@ -9,6 +9,7 @@ namespace Budget.Mvc.Mac.Repositories
 	public interface IBudgetRepository
 	{
 		List<Category> GetCategories();
+		void AddCategory(string name);
 
 		List<Transaction> GetTransactions();
 		void AddTransaction(Transaction transaction);
@@ -26,7 +27,17 @@ namespace Budget.Mvc.Mac.Repositories
 			_configuration = configuration;
 		}
 
-        public void AddTransaction(Transaction transaction)
+		public void AddCategory(string name)
+		{
+			using (IDbConnection connection = new SqliteConnection(_configuration.GetConnectionString("ConnectionString")))
+			{
+				var sql = "INSERT INTO Category(Name) Values(@Name)";
+				connection.Execute(sql, new { Name = name });
+			}
+
+		}
+
+		public void AddTransaction(Transaction transaction)
         {
 			using (IDbConnection connection = new SqliteConnection(_configuration.GetConnectionString("ConnectionString")))
 			{

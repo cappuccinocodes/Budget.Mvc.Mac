@@ -56,5 +56,14 @@ public class HomeController : Controller
 
         return RedirectToAction("Index");
     }
+
+    [HttpPost]
+    public IActionResult InsertCategory(BudgetViewModel model)
+    {
+        _budgetRepository.AddCategory(model.InsertCategory.Name);
+
+        return RedirectToAction("Index");
+    }
+
 }
 
