@@ -10,6 +10,8 @@ namespace Budget.Mvc.Mac.Repositories
 	{
 		List<Category> GetCategories();
 		void AddCategory(string name);
+		void UpdateCategory(string name, int id);
+		void DeleteCategory(int id);
 
 		List<Transaction> GetTransactions();
 		void AddTransaction(Transaction transaction);
@@ -46,7 +48,16 @@ namespace Budget.Mvc.Mac.Repositories
 			}
 		}
 
-        public void DeleteTransaction(int id)
+		public void DeleteCategory(int id)
+		{
+			using (IDbConnection connection = new SqliteConnection(_configuration.GetConnectionString("ConnectionString")))
+			{
+				var sql = "DELETE FROM Category WHERE Id = @id";
+				connection.Execute(sql, new { id });
+			}
+		}
+
+		public void DeleteTransaction(int id)
         {
 			using (IDbConnection connection = new SqliteConnection(_configuration.GetConnectionString("ConnectionString")))
 			{
@@ -83,7 +94,18 @@ namespace Budget.Mvc.Mac.Repositories
 			}
 		}
 
-        public void UpdateTransaction(Transaction transaction)
+		public void UpdateCategory(string name, int id)
+		{
+			using (IDbConnection connection = new SqliteConnection(_configuration.GetConnectionString("ConnectionString")))
+			{
+				var sql =
+					"UPDATE Category SET Name = @Name WHERE Id = @Id";
+
+				connection.Execute(sql, new { Name = name, Id = id });
+			}
+		}
+
+		public void UpdateTransaction(Transaction transaction)
         {
 			using (IDbConnection connection = new SqliteConnection(_configuration.GetConnectionString("ConnectionString")))
 			{

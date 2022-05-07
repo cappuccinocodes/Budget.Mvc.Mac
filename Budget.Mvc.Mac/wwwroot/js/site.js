@@ -50,3 +50,19 @@ $(".openDeleteTransactionModalBtn").on("click", function () {
     $('#deleteTransactionForm').append(`<input type="hidden" name="id" value="${id}">`);
     $("#deleteTransactionModal").modal("show");
 });
+
+$(".openUpdateCategoryModalBtn").on("click", function () {
+    var id = $(this).closest('tr').find('td:first').html();
+    var name = $(this).closest('tr').find('td:eq(1)').html();
+
+    $('#insert-category-form #InsertCategory_Id').val($.trim(id));
+    $('#insert-category-form #InsertCategory_Name').val($.trim(name));
+
+    $("#addCategoryModal").modal("show");
+});
+
+$(".openDeleteCategoryModalBtn").on("click", function () {
+    var id = $(this).closest('tr').find('td:first').html();
+    $('#deleteCategoryForm').append(`<input type="hidden" name="id" value="${id}">`);
+    $("#deleteCategoryModal").modal("show");
+});

@@ -60,10 +60,19 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult InsertCategory(BudgetViewModel model)
     {
-        _budgetRepository.AddCategory(model.InsertCategory.Name);
+        if (model.InsertCategory.Id > 0)
+            _budgetRepository.UpdateCategory(model.InsertCategory.Name, model.InsertCategory.Id);
+        else
+            _budgetRepository.AddCategory(model.InsertCategory.Name);
 
         return RedirectToAction("Index");
     }
 
+    public IActionResult DeleteCategory(int id)
+    {
+        _budgetRepository.DeleteCategory(id);
+
+        return RedirectToAction("Index");
+    }
 }
 
