@@ -1,20 +1,21 @@
 ﻿html {
     font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-html {
     position: relative;
     min-height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 body {
     margin-bottom: 60px;
+}
+
+.vertical-middle {
+    vertical-align: middle;
+}
+
+.font-weight-600 {
+    font-weight: 600;
 }
 
 .open-insert-modal-btn {
@@ -28,13 +29,8 @@ body {
     margin: 0 200px;
 }
 
-.container-body {
-    padding: 0 200px;
-}
-
 .buttons-cell {
     text-align: end;
-    vertical-align: middle;
 }
 
 .form-label {
@@ -47,55 +43,37 @@ body {
 
 .transaction-name {
     font-size: 22px;
-    font-weight: 600;
     margin-bottom: -30px;
 }
 
 .transaction-date {
     font-size: 13px;
-    font-weight: 600;
     color: blue;
     margin-bottom: -30px;
 }
 
 .transaction-type-income {
     font-size: 13px;
-    font-weight: 600;
     color: green;
 }
 
 .transaction-type-expense {
     font-size: 13px;
-    font-weight: 600;
     color: red;
 }
 
 .transaction-category {
-    vertical-align: middle;
     font-size: 22px;
-    font-weight: 600;
 }
 
 .transaction-amount-income {
     font-size: 22px;
-    font-weight: 600;
     color: green;
-    vertical-align: middle;
 }
 
 .transaction-amount-expense {
     font-size: 22px;
-    font-weight: 600;
     color: red;
-    vertical-align: middle;
-}
-
-.transaction-amount {
-    vertical-align: middle;
-}
-
-.filter-button-wrapper {
-    vertical-align: middle;
 }
 
 .filter-button {
@@ -125,4 +103,49 @@ body {
 
 .delete-modal-container {
     padding-top: 25px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+
+    .container-fluid {
+        padding: 0 200px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-nav {
+        margin: auto;
+    }
+
+    .transaction-name {
+        font-size: 15px;
+        padding: 3px 0;
+    }
+
+    .transaction-category {
+        font-size: 15px;
+    }
+
+    .transaction-amount-income {
+        font-size: 15px;
+    }
+
+    .transaction-amount-expense {
+        font-size: 15px;
+    }
+
+    .transaction-date {
+        font-size: 11px;
+    }
+
+    .transaction-type-income {
+        font-size: 11px;
+    }
+
+    .transaction-type-expense {
+        font-size: 11px;
+    }
 }

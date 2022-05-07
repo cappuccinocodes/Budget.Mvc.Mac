@@ -13,23 +13,23 @@
                     @Html.DisplayFor(modelItem => transaction.Id)
                 </td>
                 <td class="transaction-cell">
-                    <div id="transaction-date" class="transaction-date">
+                    <div id="transaction-date" class="transaction-date font-weight-600">
                         @Html.DisplayFor(modelItem => transaction.Date)
                     </div>
                     <br />
-                    <div id="transaction-name" class="transaction-name">
+                    <div id="transaction-name" class="transaction-name font-weight-600">
                         @Html.DisplayFor(modelItem => transaction.Name)
                     </div>
                     <br />
                     @if (transaction.TransactionType == TransactionType.Income)
                     {
-                        <div id="transaction-type" class="transaction-type-income">
+                        <div id="transaction-type" class="transaction-type-income font-weight-600">
                             @Html.DisplayFor(modelItem => transaction.TransactionType)
                         </div>
                     }
                     else
                     {
-                        <div id="transaction-type" class="transaction-type-expense">
+                        <div id="transaction-type" class="transaction-type-expense font-weight-600">
                             @Html.DisplayFor(modelItem => transaction.TransactionType)
                         </div>
                     }
@@ -37,22 +37,22 @@
                 </td>
 
 
-                <td class="transaction-amount">
+                <td class="transaction-amount vertical-middle">
                     @if (transaction.TransactionType == TransactionType.Income)
                     {
-                        <div class="transaction-amount-income">
+                        <div class="transaction-amount-income vertical-middle font-weight-600">
                             +@Html.DisplayFor(modelItem => transaction.Amount)$
                         </div>
                     }
                     else
                     {
-                        <div class="transaction-amount-expense">
+                        <div class="transaction-amount-expense vertical-middle font-weight-600">
                             -@Html.DisplayFor(modelItem => transaction.Amount)$
                         </div>
                     }
 
                 </td>
-                <td class="transaction-category">
+                <td class="transaction-category vertical-middle font-weight-600">
                     @Html.DisplayFor(modelItem => transaction.Category)
                 </td>
 
@@ -63,7 +63,7 @@
                 <td class="d-none">
                     @transaction.TransactionType
                 </td>
-                <td class="buttons-cell">
+                <td class="buttons-cell vertical-middle">
                     <button type="button" class="btn btn-danger openDeleteTransactionModalBtn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />
