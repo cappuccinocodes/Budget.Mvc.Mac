@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-using Budget.Mvc.Mac.Models;
+﻿using Budget.Mvc.Mac.Models;
 using Budget.Mvc.Mac.Models.ViewModels;
 using Budget.Mvc.Mac.Repositories;
 using Microsoft.AspNetCore.Mvc;
@@ -23,7 +22,8 @@ public class HomeController : Controller
         var viewModel = new BudgetViewModel
         {
             Transactions = transactions,
-            InsertTransaction = new InsertTransactionViewModel { Categories = categories }
+            InsertTransaction = new InsertTransactionViewModel { Categories = categories },
+            Categories = new CategoriesViewModel { Categories = categories },
         };
 
         return View(viewModel);
